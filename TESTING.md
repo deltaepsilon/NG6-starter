@@ -59,3 +59,9 @@ Use your new framework getter/setter testing functions to test all of the getter
 - Spend time to refactor your tests. The next dev who works on your class should be impressed by how efficient and well-abstracted the tests are.
 - If two tests look similar, write a local function to abstract out the similarities, keeping your tests as DRY as your code.
 
+
+# Writing tests
+
+- Open the tests and the code side-by-side. You need to see both.
+- Use code-folding to hide everything that's not relevant to the one test you're writing.
+- Go to your Zen place. Take a deep, patient breath. Write as many tests as necessary to cover every possible code path.
