@@ -56,7 +56,7 @@
     "component": "gulp component",
     "serve": "gulp serve",
     "start": "gulp serve",
-    "test": "karma start",
+    "test": "karma start karma.conf.js",
     "watch": "gulp serve",
     "webpack": "gulp webpack"
   },
