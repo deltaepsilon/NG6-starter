@@ -21,7 +21,7 @@ class AlgorithmService {
   }
 
   bubbleSortMonolith(unfiltered) {
-    const list = unfiltered.filter(value => ['number', 'string'].includes(typeof value)).slice(0);
+    const list = unfiltered.filter(value => ['number', 'string', 'boolean'].includes(typeof value)).slice(0);
     let swapped = true;
 
     while (swapped) {
