@@ -172,7 +172,7 @@ isSortableValue(value) {
 }
 ```
 
-That was fine, but as I wrote the test for ```isSortableValue```, I realized that booleans are sortable in JavaScript as well, so I should allow booleans through as well! That led to a refactor:
+That was fine, but as I wrote the test for ```isSortableValue```, I realized that booleans are sortable in JavaScript, so I should allow booleans through as well! That led to a refactor:
 
 ```
 isSortableValue(value) {
