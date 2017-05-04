@@ -26,9 +26,7 @@ describe('About', () => {
     // controller specs
     let controller;
     beforeEach(() => {
-      controller = $componentController('about', {
-        $scope: $rootScope.$new()
-      });
+      controller = $componentController('about', {});
     });
 
     it('has a name property', () => {
@@ -49,6 +47,5 @@ describe('About', () => {
     it('has name in template', () => {
       expect(template.find('h1').html()).toEqual('about');
     });
-
   });
 });
