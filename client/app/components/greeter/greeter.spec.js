@@ -5,10 +5,11 @@ import GreeterComponent from './greeter.component';
 import GreeterTemplate from './greeter.html';
 
 describe('Greeter', () => {
-  let $rootScope, $componentController, makeController, GreetingService;
+  let $componentController, makeController, GreetingService;
 
   beforeEach(window.module(ServicesModule));
   beforeEach(window.module(GreeterModule));
+
   // Overriding dependency with $provide
   // beforeEach(window.module(GreeterModule, $provide => {
   //   $provide.value('GreetingService', {
@@ -16,14 +17,15 @@ describe('Greeter', () => {
   //   })
   // }));
 
-  beforeEach(inject((_$rootScope_, _GreetingService_, $injector) => {
-    $rootScope = _$rootScope_;
-      GreetingService = _GreetingService_;
-      $componentController = $injector.get('$componentController')
-      makeController = () => {
-        return new GreeterController(GreetingService);
-      };
-    }));
+  beforeEach(inject(($injector) => {
+    $componentController = $injector.get('$componentController')
+    GreetingService = $injector.get('GreetingService');
+
+    // Alternate way to instantiate controller
+    makeController = () => {
+      return new GreeterController(GreetingService);
+    };
+  }));
 
   describe('Module', () => {
     // top-level specs: i.e., routes, injection, naming
@@ -80,6 +82,14 @@ describe('Greeter', () => {
 
       expect(controller.greet(myName)).toEqual(`Hello ${myName}`);
       expect(GreetingService.greet).toHaveBeenCalledWith(myName);
-    })
+    });
+
+    it('should call the GreetingService on greet', () => {
+      let myName = 'Lukas';
+      spyOn(GreetingService, 'greet').and.returnValue(myName);
+
+      expect(controller.greet(myName)).toEqual(myName);
+      expect(GreetingService.greet).toHaveBeenCalledWith(myName);
+    });
   });
 });
