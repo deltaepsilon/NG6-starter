@@ -1,10 +1,10 @@
 import Service from './algorithm.service';
-import UtiltiesService from '../utilities/utilities.service';
+import UtilitiesService from '../utilities/utilities.service';
 
 describe('AlgorithmService', () => {
   let service, utilitiesService;
   beforeEach(() => {
-    utilitiesService = new UtiltiesService();
+    utilitiesService = new UtilitiesService();
     service = new Service(utilitiesService);
   });
 

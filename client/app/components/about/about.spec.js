@@ -18,7 +18,7 @@ describe('About', () => {
     it('About component should be visible when navigates to /about', () => {
       $location.url('/about');
       $rootScope.$digest();
-      expect($state.current.component).to.eq('about');
+      expect($state.current.component).toEqual('about');
     });
   });
 
@@ -31,8 +31,8 @@ describe('About', () => {
       });
     });
 
-    it('has a name property', () => { // erase if removing this.name from the controller
-      expect(controller).to.have.property('name');
+    it('has a name property', () => {
+      expect(controller.name).toBeDefined();
     });
   });
 
@@ -47,7 +47,7 @@ describe('About', () => {
     });
 
     it('has name in template', () => {
-      expect(template.find('h1').html()).to.eq('about');
+      expect(template.find('h1').html()).toEqual('about');
     });
 
   });

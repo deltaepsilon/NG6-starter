@@ -18,7 +18,7 @@ describe('Home', () => {
     it('default component should be home', () => {
       $location.url('/');
       $rootScope.$digest();
-      expect($state.current.component).to.eq('home');
+      expect($state.current.component).toEqual('home');
     });
   });
 
@@ -31,8 +31,13 @@ describe('Home', () => {
       });
     });
 
-    it('has a name property', () => { // erase if removing this.name from the controller
-      expect(controller).to.have.property('name');
+    it('has a name property', () => {
+      expect(controller.name).toBeDefined();
+    });
+
+    it('should return the correct greeting', () => {
+      let myName = 'Lukas';
+      expect(controller.greet(myName)).toEqual(`Hello ${myName}`);
     });
   });
 
@@ -47,7 +52,7 @@ describe('Home', () => {
     });
 
     it('has name in template', () => {
-      expect(template.find('h1').html()).to.eq('Found in home.html');
+      expect(template.find('h1').html()).toEqual('Found in home.html');
     });
 
   });
