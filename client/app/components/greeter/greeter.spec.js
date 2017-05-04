@@ -18,12 +18,12 @@ describe('Greeter', () => {
 
   beforeEach(inject((_$rootScope_, _GreetingService_, $injector) => {
     $rootScope = _$rootScope_;
-    GreetingService = _GreetingService_;
-    $componentController = $injector.get('$componentController')
-    makeController = () => {
-      return new GreeterController(GreetingService);
-    };
-  }));
+      GreetingService = _GreetingService_;
+      $componentController = $injector.get('$componentController')
+      makeController = () => {
+        return new GreeterController(GreetingService);
+      };
+    }));
 
   describe('Module', () => {
     // top-level specs: i.e., routes, injection, naming
@@ -73,29 +73,13 @@ describe('Greeter', () => {
       let myName = 'Lukas';
       expect(controller.greet(myName)).toEqual(`Hello ${myName}`);
     });
-  });
 
-  describe('Component', () => {
-    // component/directive specs
-    let component = GreeterComponent;
-    let controller;
-    beforeEach(() => {
-      controller = $componentController('greeter', {
-        GreetingService
-      });
-    });
-
-    it('includes the intended template', () => {
-      expect(component.template).toEqual(GreeterTemplate);
-    });
-
-    it('invokes the right controller', () => {
-      expect(component.controller).toEqual(GreeterController);
-    });
-
-    it('should return the correct greeting', () => {
+    it('should call the GreetingService on greet', () => {
       let myName = 'Lukas';
+      spyOn(GreetingService, 'greet').and.callThrough();
+
       expect(controller.greet(myName)).toEqual(`Hello ${myName}`);
-    });
+      expect(GreetingService.greet).toHaveBeenCalledWith(myName);
+    })
   });
 });
