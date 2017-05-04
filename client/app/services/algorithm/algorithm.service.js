@@ -1,5 +1,7 @@
 class AlgorithmService {
   constructor(UtilitiesService) {
+    "ngInject";
+
     this.UtilitiesService = UtilitiesService;
   }
 
